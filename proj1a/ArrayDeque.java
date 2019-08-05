@@ -82,13 +82,10 @@ public class ArrayDeque<T> {
         if (size==0){
             return null;
         }
-        T tmp = array[nextLast-1];
-        array[nextLast-1]=null;
+        T tmp = array[(nextLast-1+array.length)%array.length];
+        array[(nextLast-1+array.length)%array.length]=null;
         size -=1;
         nextLast -=1;
-        if (nextLast<0){
-            nextLast = array.length-1;
-        }
         if(size ==0){
             nextFirst = nextLast;
         }
@@ -104,6 +101,5 @@ public class ArrayDeque<T> {
         }
         return array[(nextFirst+1+index)%array.length];
     }
-
 
 }
