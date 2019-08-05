@@ -11,14 +11,20 @@ public class ArrayDeque<T> {
     }
     private void resize(int len){
         T[] a = (T[]) new Object[len];
-        System.arraycopy(array, 0, a, 0, nextLast);
-        System.arraycopy(array,nextFirst+1,a,array.length+1+nextFirst,array.length-nextFirst-1);
-        nextFirst =array.length+nextFirst;
+        if(nextFirst<nextLast){
+            System.arraycopy(array,nextFirst+1,a,a.length-size,size);
+            nextFirst = a.length-size-1;
+            nextLast = 0;
+        }else{
+            System.arraycopy(array, 0, a, 0, nextLast);
+            System.arraycopy(array,nextFirst+1,a,array.length+1+nextFirst,array.length-nextFirst-1);
+            nextFirst =array.length+nextFirst;
+        }
         array = a;
     }
 
     public void addFirst(T item){
-        if (nextLast+1==nextFirst){
+        if (nextLast+1==nextFirst ||nextFirst==0){
             resize(array.length*2);
         }
         array[nextFirst]=item;
@@ -29,7 +35,7 @@ public class ArrayDeque<T> {
         nextFirst -=1;
     }
     public void addLast(T item){
-        if (nextLast+1==nextFirst){
+        if (nextLast+1 == nextFirst||nextFirst == 0){
             resize(array.length*2);
         }
         // ensure nextlast has space
@@ -63,6 +69,9 @@ public class ArrayDeque<T> {
         array[nextFirst+1]=null;
         nextFirst+=1;
         size -=1;
+        if(size==0){
+            nextLast = nextFirst;
+        }
         float R = (float) size/array.length;
         if (R<0.25 &&array.length>16){
             resize(array.length/2);
@@ -80,6 +89,9 @@ public class ArrayDeque<T> {
         if (nextLast<0){
             nextLast = array.length-1;
         }
+        if(size ==0){
+            nextFirst = nextLast;
+        }
         float R = (float) size/array.length;
         if (R<0.25 &&array.length>16){
             resize(array.length/2);
@@ -92,4 +104,6 @@ public class ArrayDeque<T> {
         }
         return array[(nextFirst+1+index)%array.length];
     }
+
+
 }
