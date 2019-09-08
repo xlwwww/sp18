@@ -24,7 +24,7 @@ public class TestPalindrome {
     }
     @Test
     public void testoffbyone(){
-        String a = "flake";
+        String a = "detrude";
         CharacterComparator cc = new OffByOne();
         assertTrue(palindrome.isPalindrome(a,cc));
     }

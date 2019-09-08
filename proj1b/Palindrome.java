@@ -13,7 +13,7 @@ public class Palindrome {
         return isPalindrome(realword);
     }
 
-    public boolean isPalindrome(Deque<Character> realword){
+    private boolean isPalindrome(Deque<Character> realword){
         while(realword.size()>1){
             return realword.removeFirst()==realword.removeLast() && isPalindrome(realword);
         }
@@ -24,7 +24,7 @@ public class Palindrome {
         Deque<Character> realword = wordToDeque(word);
         return isPalindrome(realword,cc);
     }
-    public boolean isPalindrome(Deque<Character> word, CharacterComparator cc){
+    private boolean isPalindrome(Deque<Character> word, CharacterComparator cc){
         OffByOne charcomp = (OffByOne) cc;
         while(word.size()>1){
             return charcomp.equalChars(word.removeFirst(),word.removeLast()) && isPalindrome(word,cc);
