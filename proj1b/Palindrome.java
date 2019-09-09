@@ -25,9 +25,8 @@ public class Palindrome {
         return isPalindrome(realword,cc);
     }
     private boolean isPalindrome(Deque<Character> word, CharacterComparator cc){
-        OffByOne charcomp = (OffByOne) cc;
         while(word.size()>1){
-            return charcomp.equalChars(word.removeFirst(),word.removeLast()) && isPalindrome(word,cc);
+            return cc.equalChars(word.removeFirst(),word.removeLast()) && isPalindrome(word,cc);
         }
         return true;
     }

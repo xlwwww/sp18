@@ -28,4 +28,10 @@ public class TestPalindrome {
         CharacterComparator cc = new OffByOne();
         assertTrue(palindrome.isPalindrome(a,cc));
     }
+    @Test
+    public void testoffbyn(){
+        String a ="aaf" ;
+        CharacterComparator cc = new OffByN(5);
+        assertTrue(palindrome.isPalindrome(a,cc));
+    }
 }
