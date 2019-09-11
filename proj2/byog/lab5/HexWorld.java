@@ -70,30 +70,37 @@ public class HexWorld {
             }
             //0,2;1,13;2,024;3,13;4,024;5,13;6,024;7,13;8,2
         }
-        TETile t = Tileset.GRASS;
-        addHexagon(Tiles,p[0][2],s,t);
-        addHexagon(Tiles,p[0][4],s,t);
-        addHexagon(Tiles,p[1][7],s,t);
-        t = Tileset.FLOWER;
-        addHexagon(Tiles,p[3][7],s,t);
-        addHexagon(Tiles,p[4][6],s,t);
-        addHexagon(Tiles,p[1][1],s,t);
-        t = Tileset.TREE;
-        addHexagon(Tiles,p[2][8],s,t);
-        addHexagon(Tiles,p[3][3],s,t);
-        addHexagon(Tiles,p[4][4],s,t);
+
+        TETile t;
         t = Tileset.MOUNTAIN;
         addHexagon(Tiles,p[0][6],s,t);
         addHexagon(Tiles,p[1][3],s,t);
         addHexagon(Tiles,p[1][5],s,t);
-        addHexagon(Tiles,p[2][0],s,t);
         addHexagon(Tiles,p[2][2],s,t);
         addHexagon(Tiles,p[2][4],s,t);
         addHexagon(Tiles,p[2][6],s,t);
         addHexagon(Tiles,p[3][1],s,t);
+
+        t= Tileset.GRASS;
+
+        addHexagon(Tiles,p[0][2],s,t);
+        addHexagon(Tiles,p[0][4],s,t);
+        addHexagon(Tiles,p[1][7],s,t);
+
+        t = Tileset.FLOWER;
+        addHexagon(Tiles,p[3][7],s,t);
+        addHexagon(Tiles,p[4][6],s,t);
+        addHexagon(Tiles,p[1][1],s,t);
+
+        t = Tileset.TREE;
+        addHexagon(Tiles,p[2][8],s,t);
+        addHexagon(Tiles,p[3][3],s,t);
+        addHexagon(Tiles,p[4][4],s,t);
+
         t = Tileset.SAND;
         addHexagon(Tiles,p[3][5],s,t);
         addHexagon(Tiles,p[4][2],s,t);
+
         ter.renderFrame(Tiles);
     }
     }
