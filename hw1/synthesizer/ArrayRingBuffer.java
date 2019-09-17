@@ -1,8 +1,6 @@
 package synthesizer;// TODO: Make sure to make this class a part of the synthesizer package
 // package <package name>;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Objects;
 
 //TODO: Make sure to make this class and all of its methods public
 //TODO: Make sure to make this class extend AbstractBoundedQueue<t>
@@ -73,13 +71,13 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     }
 
     @Override
-    public void enqueue(Object x) {
+    public void enqueue(T x) {
         if(this.isEmpty()){
             last = first;
-            rb[last] = (T)x;
+            rb[last] = x;
         }else if(isFull()!=true) {
             last = (last+1)%capacity;
-            rb[last] = (T) x;
+            rb[last] = x;
         } else{
             throw new RuntimeException("Ring Buffer Overflow");
         }
