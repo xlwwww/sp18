@@ -97,7 +97,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<T> iterator() {
         return new RingIterator();
     }
     // TODO: When you get to part 5, implement the needed code to support iteration.
@@ -112,16 +112,22 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     */
 
     private class RingIterator implements Iterator<T>{
-        private int i = first;
+        private int i;
+        private int count = 0;
+        public RingIterator(){
+            i = first;
+            count = 0;
+        }
         @Override
         public boolean hasNext() {
-            return i<capacity+first;
+            return count<fillCount;
         }
 
         @Override
         public T next() {
             T tmp = rb[i%capacity];
             i++;
+            count++;
             return tmp;
         }
     }
