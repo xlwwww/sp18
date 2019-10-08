@@ -6,13 +6,13 @@ import java.util.Map;
 
 public class Percolation {
     // create N-by-N grid, with all sites initially blocked
-    int N;
-    int[][] grid;
-    int num = 0;
-    WeightedQuickUnionUF conn;
-    WeightedQuickUnionUF extraconn;
-    int top;
-    int bottom;
+    private int N;
+    private int[][] grid;
+    private int num = 0;
+    private WeightedQuickUnionUF conn;
+    private WeightedQuickUnionUF extraconn;
+    private int top;
+    private int bottom;
     public Percolation(int N) {
         this.N = N;
         if(N <=0){

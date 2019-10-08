@@ -3,8 +3,8 @@ import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
 public class PercolationStats {
     // perform T independent experiments on an N-by-N grid
-    double[] count;
-    int T;
+    private double[] count;
+    private int T;
     public PercolationStats(int N, int T, PercolationFactory pf) {
         if(N <= 0 || T <=0){
             throw new java.lang.IllegalArgumentException();
@@ -37,8 +37,7 @@ public class PercolationStats {
 
     // low endpoint of 95% confidence interval
     private double computehelp(){
-        double var = Math.sqrt(stddev());
-        return 1.96*var/Math.sqrt(T);
+        return 1.96*stddev()/Math.sqrt(T);
     }
     public double confidenceLow() {
         return mean()-computehelp();
